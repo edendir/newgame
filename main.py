@@ -28,6 +28,7 @@ SCORE = 0
 font = pygame.font.SysFont("Verdana", 60)
 font_small = pygame.font.SysFont("Verdana", 20)
 game_over = font.render("GAME OVER", True, BLACK)
+retry = font_small.render("Press SPACE to retry", False, BLACK)
 
 # Set display
 background = pygame.image.load("venv/AnimatedStreet.png")
@@ -45,15 +46,15 @@ class player(pygame.sprite.Sprite):
 
     def move(self):
         pressed_keys = pygame.key.get_pressed()
-        # if pressed_keys[K_UP]:
+        # if pressed_keys[K_UP, K_w]:
         # self.rect.move_ip(0, -5)
-        # if pressed_keys[K_DOWN]:
+        # if pressed_keys[K_DOWN, K_s]:
         # self.rect.move_ip(0,5)
         if self.rect.left > 0:
-            if pressed_keys[K_LEFT]:
+            if pressed_keys[K_LEFT, K_a]:
                 self.rect.move_ip(-5, 0)
         if self.rect.right < screen_width:
-            if pressed_keys[K_RIGHT]:
+            if pressed_keys[K_RIGHT, K_d]:
                 self.rect.move_ip(5, 0)
 
 
@@ -119,8 +120,9 @@ while True:
         for entity in all_sprites:
             entity.kill()
         time.sleep(2)
-        pygame.quit()
-        sys.exit()
+        display_surf.blit(retry, (30, 250))
+        pygame.display.update()
+        if pygame.key.get_pressed()
 
     pygame.display.update()
     FramesPerSec.tick(60)
