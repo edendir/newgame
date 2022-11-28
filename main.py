@@ -51,10 +51,10 @@ class player(pygame.sprite.Sprite):
         # if pressed_keys[K_DOWN, K_s]:
         # self.rect.move_ip(0,5)
         if self.rect.left > 0:
-            if pressed_keys[K_LEFT, K_a]:
+            if pressed_keys[K_LEFT or K_a]:
                 self.rect.move_ip(-5, 0)
         if self.rect.right < screen_width:
-            if pressed_keys[K_RIGHT, K_d]:
+            if pressed_keys[K_RIGHT or K_d]:
                 self.rect.move_ip(5, 0)
 
 
@@ -120,9 +120,15 @@ while True:
         for entity in all_sprites:
             entity.kill()
         time.sleep(2)
-        display_surf.blit(retry, (30, 250))
-        pygame.display.update()
-        if pygame.key.get_pressed()
+        # display_surf.blit(retry, (30, 250))
+        # pygame.display.update()
+        # time.sleep(10)
+        # if pygame.key.get_pressed() == K_SPACE:
+        #     continue
+        # else:
+        #     break
+        pygame.quit()
+        sys.exit()
 
     pygame.display.update()
     FramesPerSec.tick(60)
